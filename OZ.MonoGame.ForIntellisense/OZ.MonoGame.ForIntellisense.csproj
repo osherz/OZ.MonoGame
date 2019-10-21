@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -70,6 +71,9 @@
     </Compile>
     <Compile Include="..\GameObjects\UI\ControlsCollection.cs">
       <Link>GameObjects\UI\ControlsCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\GameObjects\UI\IControlApearance.cs">
+      <Link>GameObjects\UI\IControlApearance.cs</Link>
     </Compile>
     <Compile Include="..\GameObjects\UI\ITextDrawing.cs">
       <Link>GameObjects\UI\ITextDrawing.cs</Link>

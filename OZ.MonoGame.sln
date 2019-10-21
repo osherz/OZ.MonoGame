@@ -5,9 +5,21 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OZ.MonoGame", "OZ.MonoGame.shproj", "{C616B893-3EE5-4840-B471-5F07677DE878}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OZ.MonoGame.ForIntellisense", "OZ.MonoGame.ForIntellisense\OZ.MonoGame.ForIntellisense.csproj", "{342AE834-3FF8-4BDB-9840-8D2A98406B07}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		OZ.MonoGame.projitems*{c616b893-3ee5-4840-b471-5f07677de878}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{342AE834-3FF8-4BDB-9840-8D2A98406B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342AE834-3FF8-4BDB-9840-8D2A98406B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342AE834-3FF8-4BDB-9840-8D2A98406B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342AE834-3FF8-4BDB-9840-8D2A98406B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
