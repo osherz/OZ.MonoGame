@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>e0ff05b2-db05-402b-b6c2-c4f2ffac2a94</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>OZ.MonoGame</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\Effects\Animation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\Effects\IAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\Effects\MoveToAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\IGameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\ILocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Anchor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Button.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ChangeApearanceRelativeMouseControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Control.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ControlsCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ITextDrawing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Label.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Menu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Panel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\TextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\UIHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\UIObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePrototype.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+</Project>

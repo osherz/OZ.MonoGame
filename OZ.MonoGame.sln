@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OZ.MonoGame", "OZ.MonoGame.shproj", "{C616B893-3EE5-4840-B471-5F07677DE878}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		OZ.MonoGame.projitems*{c616b893-3ee5-4840-b471-5f07677de878}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F2B645E-804F-4A0D-B367-C8EC861AE1B0}
+	EndGlobalSection
+EndGlobal
