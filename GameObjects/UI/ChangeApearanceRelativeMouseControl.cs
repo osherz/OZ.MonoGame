@@ -17,8 +17,27 @@ namespace OZ.MonoGame.GameObjects.UI
         {
         }
 
-        public Texture2D HoverTexture { get; set; }
-        public Texture2D PressedTexture { get; set; }
+        private Texture2D _hoverTexture;
+        public Texture2D HoverTexture
+        {
+            get => _hoverTexture is null ? ControlApearance.MouseHover : _hoverTexture;
+
+            set
+            {
+                _hoverTexture = value;
+            }
+        }
+
+        private Texture2D _pressedTexture;
+        public Texture2D PressedTexture
+        {
+            get => _pressedTexture is null ? ControlApearance.MouseDown : _pressedTexture;
+
+            set
+            {
+                _pressedTexture = value;
+            }
+        }
 
         protected override Texture2D TextureToDrawIfEnabled
         {
