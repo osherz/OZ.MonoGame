@@ -54,7 +54,9 @@ namespace OZ.MonoGame.GameObjects.UI
         private SpriteFont _font;
         public virtual SpriteFont Font
         {
-            get => _font;
+            get => _font is null ? 
+                            ControlApearance is null ? null : ControlApearance.Font
+                        : _font;
             set
             {
                 if (Font != value)
