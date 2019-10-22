@@ -1,4 +1,8 @@
 .vs/
+content/bin/
+content/obj/
+
+
 OZ.MonoGame.ForIntellisense/bin/
 OZ.MonoGame.ForIntellisense/obj/
 OZ.MonoGame.ForIntellisense/.vs/
