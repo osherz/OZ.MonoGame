@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ChangeApearanceRelativeMouseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\Control.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ControlApearance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ControlsCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\IControlApearance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjects\UI\ITextDrawing.cs" />

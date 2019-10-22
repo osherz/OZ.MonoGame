@@ -30,12 +30,14 @@ namespace OZ.MonoGame.GameObjects.UI
         }
 
         #region Textures Properties
-        public IControlApearance ControlApearance { get; set; }
+        public virtual IControlApearance ControlApearance { get; set; }
 
         private Texture2D _regTexture;
         public Texture2D RegTexture
         {
-            get => _regTexture is null ? ControlApearance.Reg : _regTexture;
+            get => _regTexture is null ? 
+                        ControlApearance is null ? null : ControlApearance.Reg 
+                     : _regTexture;
             set
             {
                 if (_regTexture != value)
@@ -60,7 +62,7 @@ namespace OZ.MonoGame.GameObjects.UI
                 {
                     return _textureForNotEnabled;
                 }
-                else if (ControlApearance.NotEnable is null)
+                else if (ControlApearance is null || ControlApearance.NotEnable is null)
                 {
                     return RegTexture;
                 }

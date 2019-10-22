@@ -20,7 +20,9 @@ namespace OZ.MonoGame.GameObjects.UI
         private Texture2D _hoverTexture;
         public Texture2D HoverTexture
         {
-            get => _hoverTexture is null ? ControlApearance.MouseHover : _hoverTexture;
+            get => _hoverTexture is null ? 
+                                ControlApearance is null ? null : ControlApearance.MouseHover
+                            : _hoverTexture;
 
             set
             {
@@ -31,7 +33,9 @@ namespace OZ.MonoGame.GameObjects.UI
         private Texture2D _pressedTexture;
         public Texture2D PressedTexture
         {
-            get => _pressedTexture is null ? ControlApearance.MouseDown : _pressedTexture;
+            get => _pressedTexture is null ? 
+                                ControlApearance is null ? null : ControlApearance.MouseDown 
+                            : _pressedTexture;
 
             set
             {
@@ -65,8 +69,36 @@ namespace OZ.MonoGame.GameObjects.UI
         }
 
         #region AUDIO
-        public SoundEffect AudioInHovered { get; set; }
-        public SoundEffect AudioInPressed { get; set; }
+        private SoundEffect _audioInHovered;
+        public SoundEffect AudioInHovered 
+        { 
+            get
+            {
+                if(_audioInHovered is null)
+                {
+                    return ControlApearance is null ? null : ControlApearance.MouseHoverAudio;
+                }
+
+                return _audioInHovered;
+            }
+            set => _audioInHovered = value;
+        }
+
+
+        private SoundEffect _audioInPressed;
+        public SoundEffect AudioInPressed
+        {
+            get
+            {
+                if (_audioInPressed is null)
+                {
+                    return ControlApearance is null ? null : ControlApearance.MouseDownAudio;
+                }
+
+                return _audioInPressed;
+            }
+            set => _audioInPressed = value;
+        }
         #endregion AUDIO
 
 

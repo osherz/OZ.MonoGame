@@ -18,6 +18,15 @@ namespace OZ.MonoGame.GameObjects.UI
         public SpriteFont Font { get => ((ITextDrawing)_headLineLabel).Font; set => ((ITextDrawing)_headLineLabel).Font = value; }
         public Color ForeColor { get => ((ITextDrawing)_headLineLabel).ForeColor; set => ((ITextDrawing)_headLineLabel).ForeColor = value; }
 
+        public override IControlApearance ControlApearance
+        {
+            get => base.ControlApearance;
+            set
+            {
+                base.ControlApearance = value;
+                _headLineLabel.ControlApearance = ControlApearance;
+            }
+        }
         public Rectangle TextRectangle
         {
             get;
