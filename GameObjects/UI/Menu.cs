@@ -89,7 +89,6 @@ namespace OZ.MonoGame.GameObjects.UI
 
         protected override void OnGameParentChanged(EventArgs e)
         {
-            //_headLineLabel.GameParent = GameParent;
             base.OnParentChanged(e);
         }
 

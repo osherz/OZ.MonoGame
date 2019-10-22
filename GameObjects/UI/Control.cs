@@ -220,20 +220,6 @@ namespace OZ.MonoGame.GameObjects.UI
             }
         }
 
-        //private bool _isPressed;
-        //public virtual bool IsPressed
-        //{
-        //    get { return _isPressed; }
-        //    set
-        //    {
-        //        if (IsPressed != value)
-        //        {
-        //            _isPressed = value;
-        //            if (IsPressed) OnClicked();
-        //        }
-        //    }
-        //}
-
         private bool _isPressing;
         public bool IsPressing
         {
@@ -549,45 +535,6 @@ namespace OZ.MonoGame.GameObjects.UI
             }
         }
 
-        private void CalcTextureForNotEnabled()
-        {
-            if (!(RegTexture is null))
-            {
-                int width = RegTexture.Width;
-                int height = RegTexture.Height;
-
-                var graphicsDevice = GameParent.GraphicsDevice;
-
-                RenderTarget2D notEnabledTexture = new RenderTarget2D(
-                    graphicsDevice,
-                    width,
-                    height,
-                    false,
-                    graphicsDevice.PresentationParameters.BackBufferFormat,
-                    DepthFormat.Depth24);
-
-                graphicsDevice.SetRenderTarget(notEnabledTexture);
-                graphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
-
-                // Draw the scene
-                var spriteBatch = GameParent.SpriteBatch;
-                graphicsDevice.Clear(Color.Transparent);
-                spriteBatch.Begin(SpriteSortMode.Deferred,
-                                  null,
-                                  null,
-                                  null,
-                                  null,
-                                  _darkingEffect,
-                                  null);
-                spriteBatch.Draw(RegTexture, Vector2.Zero, Color.White);
-                spriteBatch.End();
-                TextureForNotEnabled = notEnabledTexture;
-
-                // Drop the render target
-                graphicsDevice.SetRenderTarget(null);
-            }
-
-        }
         private void CheckInputLocationRelativeToControl(Vector2 inputPosition, bool isPressed)
         {
             if (IsContains(inputPosition.ToPoint())) // Cursor inside control
@@ -598,21 +545,6 @@ namespace OZ.MonoGame.GameObjects.UI
                 IsFocus = IsPressing && !isPressed;
                 IsPressing = isPressed;
 
-
-                //if (isPressed)
-                //{
-                //    IsPressing = true;
-
-                //}
-                //else
-                //{
-                //    if (IsPressing) // Mouse clicked because mouse was down and now up.
-                //    {
-                //        IsPressed = true;
-                //        IsPressing = false;
-                //        IsFocus = true;
-                //    }
-                //}
             }
             else // If mouse not in the control
             {

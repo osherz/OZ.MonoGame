@@ -11,7 +11,6 @@ namespace OZ.MonoGame.GameObjects.UI
     public interface ITextDrawing
     {
         string Text { get; set; }
-        //Vector2 Location { get; set; }
         float TextScale { get; set; }
         SpriteFont Font { get; set; }
         Color ForeColor { get; set; }

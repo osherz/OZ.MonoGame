@@ -116,13 +116,7 @@ namespace OZ.MonoGame.GameObjects.UI
 
         public void RemoveAt(int index)
         {
-            var control = this[index];
             ((IList<Control>)_controls).RemoveAt(index);
-           /* if (!(GameParent is null) && GameParent.IsLoadContentHappened)
-            {
-                control.Initialize();
-                control.LoadContent(GameParent.Content);
-            }*/
             OnControlRemoved();
         }
 
