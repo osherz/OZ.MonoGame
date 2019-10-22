@@ -81,5 +81,39 @@ namespace OZ.MonoGame.GameObjects.UI
             return newTexture;
 
         }
+
+        public static Texture2D DarkingTexture(this Texture2D texture, GamePrototype game)
+        {
+            Effect darkingEffect = GetDarkingEffect(game);
+            return ActiveEffectOnTexture(texture, game, darkingEffect);
+        }
+
+        public static Texture2D GlowingTexture(this Texture2D texture, GamePrototype game)
+        {
+            Effect glowingEffect = GetGlowingEffect(game);
+            return ActiveEffectOnTexture(texture, game, glowingEffect);
+        }
+
+
+        private static Effect _darkingEffect;
+        private static Effect GetDarkingEffect(GamePrototype game)
+        {
+            if(_darkingEffect is null)
+            {
+                _darkingEffect = game.Content.Load<Effect>("Effects/UI.DarkingEffect");
+            }
+            return _darkingEffect;
+        }
+
+        private static Effect _glowingEffect;
+        private static Effect GetGlowingEffect(GamePrototype game)
+        {
+            if (_glowingEffect is null)
+            {
+                _glowingEffect = game.Content.Load<Effect>("Effects/UI.GlowingEffect");
+            }
+            return _glowingEffect;
+        }
+
     }
 }
