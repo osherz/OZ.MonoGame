@@ -13,8 +13,6 @@ namespace OZ.MonoGame.GameObjects.UI
 {
     public class Panel : Control, ICollection<Control>, IEnumerable<Control>
     {
-        protected override bool BlackTextureWhenNotEnabled { get; set; } = false;
-
         public int SpaceBetweenControls { get; set; } = 10;
 
         #region ICollection Implementation

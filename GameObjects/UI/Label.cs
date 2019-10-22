@@ -175,7 +175,6 @@ namespace OZ.MonoGame.GameObjects.UI
             LookingChanged+=(sender,e) => CalculateLocationOfText();
             BkgTransparent = true;
             ForeColor = Color.Black;
-            BlackTextureWhenNotEnabled = false;
         }
 
         public override void Initialize()

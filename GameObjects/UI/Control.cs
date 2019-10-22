@@ -30,12 +30,12 @@ namespace OZ.MonoGame.GameObjects.UI
         }
 
         #region Textures Properties
-        private Effect _darkingEffect;
+        public IControlApearance ControlApearance { get; set; }
 
         private Texture2D _regTexture;
         public Texture2D RegTexture
         {
-            get => _regTexture;
+            get => _regTexture is null ? ControlApearance.Reg : _regTexture;
             set
             {
                 if (_regTexture != value)
@@ -50,26 +50,33 @@ namespace OZ.MonoGame.GameObjects.UI
         /// <summary>
         /// Texture to draw if IsEnabled = true
         /// </summary>
-        protected virtual Texture2D TextureToDrawIfEnabled { get => RegTexture; }
 
-        private bool _blackTextureWhenNotEnabled = true;
-        /// <summary>
-        /// Whether to "black" the RegTexture if control not enbled or to draw TextureToDraw (regulary).
-        /// </summary>
-        protected virtual bool BlackTextureWhenNotEnabled
+        private Texture2D _textureForNotEnabled;
+        public Texture2D TextureForNotEnabled
         {
-            get => _blackTextureWhenNotEnabled;
+            get
+            {
+                if (!(_textureForNotEnabled is null))
+                {
+                    return _textureForNotEnabled;
+                }
+                else if (ControlApearance.NotEnable is null)
+                {
+                    return RegTexture;
+                }
+                else return ControlApearance.NotEnable;
+
+            }
             set
             {
-                if (_blackTextureWhenNotEnabled != value)
-                {
-                    _blackTextureWhenNotEnabled = value;
-                    OnBlackTextureWhenNotEnabledChanged(EventArgs.Empty);
-                }
+                _textureForNotEnabled = value;
             }
         }
 
-        protected Texture2D TextureForNotEnabled { get; set; }
+        protected virtual Texture2D TextureToDrawIfEnabled
+        {
+            get => RegTexture;
+        }
 
         /// <summary>
         /// Texture to draw.
@@ -79,7 +86,7 @@ namespace OZ.MonoGame.GameObjects.UI
         {
             get
             {
-                if ((IsEnabled && IsParentsEnabled) || !BlackTextureWhenNotEnabled)
+                if (IsEnabled && IsParentsEnabled)
                 {
                     return TextureToDrawIfEnabled;
                 }
@@ -291,7 +298,6 @@ namespace OZ.MonoGame.GameObjects.UI
         public event EventHandler RegTextureChanged;
         public event EventHandler RectangleOfContentDrawingChanged;
         protected event EventHandler ScaleChanged;
-        public event EventHandler BlackTextureWhenNotEnabledChanged;
         #endregion EVENTS
 
         #region RAISE EVENTS METHOD
@@ -331,14 +337,6 @@ namespace OZ.MonoGame.GameObjects.UI
         {
             ScaleChanged?.Invoke(this, e);
         }
-        protected virtual void OnBlackTextureWhenNotEnabledChanged(EventArgs e)
-        {
-            if (BlackTextureWhenNotEnabled && !(RegTexture is null))
-            {
-                TextureForNotEnabled = RegTexture.ActiveEffectOnTexture(GameParent, _darkingEffect);
-            }
-            BlackTextureWhenNotEnabledChanged?.Invoke(this, e);
-        }
         protected override void OnGameParentChanged(EventArgs e)
         {
             base.OnGameParentChanged(e);
@@ -360,10 +358,6 @@ namespace OZ.MonoGame.GameObjects.UI
             LookingChanged += (sender, e) =>
               {
                   CalculateScale();
-                  if (BlackTextureWhenNotEnabled && !(RegTexture is null))
-                  {
-                      TextureForNotEnabled = RegTexture.ActiveEffectOnTexture(GameParent, _darkingEffect);
-                  }
                   if (_toMiddleAfterSuspendResume)
                   {
                       ToMiddle();
@@ -381,7 +375,6 @@ namespace OZ.MonoGame.GameObjects.UI
 
         public override void LoadContent(ContentManager content)
         {
-            _darkingEffect = content.Load<Effect>("Effects/UI.DarkingEffect");
             Controls.LoadContent(content);
         }
 
