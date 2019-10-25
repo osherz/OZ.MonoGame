@@ -16,7 +16,6 @@ namespace OZ.MonoGame.GameObjects.UI
         /// Location of text relative to control.
         /// </summary>
         protected Vector2 LocationOfText { get; private set; }
-        internal override Vector2 LocationInWindow => Parent is null ? Location : Parent.LocationInWindow + Location;
        
         /// <summary>
         /// Location of text relative to window.
