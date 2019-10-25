@@ -608,8 +608,10 @@ namespace OZ.MonoGame.GameObjects.UI
             {
                 IsHover = true;
 
-
-                IsFocus = IsPressing && !isPressed;
+                if(isPressed)
+                {
+                    IsFocus = true;
+                }
                 IsPressing = isPressed;
 
             }
