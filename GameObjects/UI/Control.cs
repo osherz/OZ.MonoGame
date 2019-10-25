@@ -156,7 +156,27 @@ namespace OZ.MonoGame.GameObjects.UI
         #endregion Rectangle Of Drawing Content Properties
 
         #region Drawing Properties
-        internal override Vector2 LocationInWindow => Parent is null ? Location : Parent.LocationInWindow + Location;
+        private Dock _dock;
+
+        public Dock Dock
+        {
+            get { return _dock; }
+            set 
+            { 
+                _dock = value;
+                OnDockChanged();
+            }
+        }
+
+        internal override Vector2 LocationInWindow
+        {
+            get
+            {
+                Vector2 location = CalcLocationRelateToParent();
+
+                return Parent is null ? location : Parent.LocationInWindow + location;
+            }
+        }
 
         private Color _bkgColor = Color.White;
         /// <summary>
@@ -213,6 +233,7 @@ namespace OZ.MonoGame.GameObjects.UI
         #endregion Drawing Properties
 
         #region Mouse Trigger Properties
+        //Using only in WINDOWS
         private bool _isHover;
         public bool IsHover
         {
@@ -299,6 +320,7 @@ namespace OZ.MonoGame.GameObjects.UI
         public event EventHandler BkgTransparentChanged;
         public event EventHandler RegTextureChanged;
         public event EventHandler RectangleOfContentDrawingChanged;
+        public event EventHandler DockChanged;
         protected event EventHandler ScaleChanged;
         #endregion EVENTS
 
@@ -334,6 +356,10 @@ namespace OZ.MonoGame.GameObjects.UI
         protected virtual void OnRectangleOfContentDrawingChanged(EventArgs e)
         {
             RectangleOfContentDrawingChanged?.Invoke(this, e);
+        }
+        protected virtual void OnDockChanged()
+        {
+            DockChanged?.Invoke(this, EventArgs.Empty);
         }
         protected virtual void OnScaleChanged(EventArgs e)
         {
@@ -529,6 +555,52 @@ namespace OZ.MonoGame.GameObjects.UI
                 Location = UIHelper.ToMiddle(dest, Size);
             }
         }
+
+        /// <summary>
+        /// Calculation location relate to parent with considering Dock value.
+        /// </summary>
+        /// <returns></returns>
+        private Vector2 CalcLocationRelateToParent()
+        {
+            Vector2 location = Location;
+
+            switch (Dock)
+            {
+                case Dock.None:
+                    break;
+                case Dock.Left:
+                    location.X = 0;
+                    break;
+                case Dock.Right:
+                    if (!(Parent is null))
+                    {
+                        location.X = Parent.Size.X - Size.X;
+                    }
+                    else
+                    {
+                        location.X = GameParent.Size.X - Size.X;
+                    }
+                    break;
+                case Dock.Top:
+                    location.Y = 0;
+                    break;
+                case Dock.Bottom:
+                    if (!(Parent is null))
+                    {
+                        location.Y = Parent.Size.Y - Size.Y;
+                    }
+                    else
+                    {
+                        location.Y = GameParent.Size.X - Size.Y;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return location;
+        }
+
 
         private void CheckInputLocationRelativeToControl(Vector2 inputPosition, bool isPressed)
         {

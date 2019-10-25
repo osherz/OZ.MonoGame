@@ -20,6 +20,8 @@ namespace OZ.MonoGame
         public GraphicsDeviceManager Graphics { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
 
+        public Point Size => new Point(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
+
         List<Control> _controls;
         public List<Control> Controls => _controls;
 
