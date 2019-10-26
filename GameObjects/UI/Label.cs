@@ -201,15 +201,18 @@ namespace OZ.MonoGame.GameObjects.UI
         protected override void InDraw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             base.InDraw(gameTime, spriteBatch);
-            spriteBatch.DrawString(Font,
-                                   Text,
-                                   LocationOfTextInWindow,
-                                   ForeColor,
-                                   RotationInWindow,
-                                   Origin,
-                                   TextScale,
-                                   SpriteEffect,
-                                   1);
+            if (!string.IsNullOrEmpty(Text))
+            {
+                spriteBatch.DrawString(Font,
+                                       Text,
+                                       LocationOfTextInWindow,
+                                       ForeColor,
+                                       RotationInWindow,
+                                       Origin,
+                                       TextScale,
+                                       SpriteEffect,
+                                       1);
+            }
         }
 
 
