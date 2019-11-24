@@ -16,7 +16,6 @@ namespace OZ.MonoGame.GameObjects.UI
         /// Location of text relative to control.
         /// </summary>
         protected Vector2 LocationOfText { get; private set; }
-        internal override Vector2 LocationInWindow => Parent is null ? Location : Parent.LocationInWindow + Location;
        
         /// <summary>
         /// Location of text relative to window.
@@ -202,15 +201,18 @@ namespace OZ.MonoGame.GameObjects.UI
         protected override void InDraw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             base.InDraw(gameTime, spriteBatch);
-            spriteBatch.DrawString(Font,
-                                   Text,
-                                   LocationOfTextInWindow,
-                                   ForeColor,
-                                   RotationInWindow,
-                                   Origin,
-                                   TextScale,
-                                   SpriteEffect,
-                                   1);
+            if (!string.IsNullOrEmpty(Text))
+            {
+                spriteBatch.DrawString(Font,
+                                       Text,
+                                       LocationOfTextInWindow,
+                                       ForeColor,
+                                       RotationInWindow,
+                                       Origin,
+                                       TextScale,
+                                       SpriteEffect,
+                                       1);
+            }
         }
 
 

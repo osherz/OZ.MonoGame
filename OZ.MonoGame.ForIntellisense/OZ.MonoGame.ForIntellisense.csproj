@@ -75,6 +75,9 @@
     <Compile Include="..\GameObjects\UI\ControlsCollection.cs">
       <Link>GameObjects\UI\ControlsCollection.cs</Link>
     </Compile>
+    <Compile Include="..\GameObjects\UI\Dock.cs">
+      <Link>GameObjects\UI\Dock.cs</Link>
+    </Compile>
     <Compile Include="..\GameObjects\UI\IControlApearance.cs">
       <Link>GameObjects\UI\IControlApearance.cs</Link>
     </Compile>
