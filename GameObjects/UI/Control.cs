@@ -452,9 +452,10 @@ namespace OZ.MonoGame.GameObjects.UI
 #endif
 
                 CheckInputLocationRelativeToControl(position, isPressed);
+                InUpdate(gameTime);
+
             }
 
-            InUpdate(gameTime);
             Controls.Update(gameTime);
         }
 
