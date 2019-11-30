@@ -1,21 +1,40 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using OZ.MonoGame;
+using OZ.MonoGame.GameObjects.UI;
 
 namespace OZ.MonoGame.UITests
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class Game1 : GamePrototype
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+
+        Color _bkgColor = Color.AliceBlue;
+
+        Button button;
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            button = new Button(this)
+            {
+                //Text = "hello",
+                Location = Vector2.Zero,
+                Size = Vector2.One * 200
+            };
+            button.Clicked += Button_Clicked;
+            Controls.Add(button);
+        }
+
+        private void Button_Clicked(object sender, System.EventArgs e)
+        {
+           _bkgColor = _bkgColor == Color.Brown ? Color.Black : Color.Brown;
+            button.IsVisible = !button.IsVisible;
         }
 
         /// <summary>
@@ -38,8 +57,11 @@ namespace OZ.MonoGame.UITests
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            base.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            button.RegTexture = new Texture2D(GraphicsDevice, 1, 1);
+            button.RegTexture.SetData(new[] { Color.Red });
+            button.HoverTexture = UIHelper.GlowingTexture(button.RegTexture, this);
             // TODO: use this.Content to load your game content here
         }
 
@@ -73,7 +95,7 @@ namespace OZ.MonoGame.UITests
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(_bkgColor);
 
             // TODO: Add your drawing code here
 
